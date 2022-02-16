@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Joonko BitBucket Conventional Comments
-// @version      1.0.3
+// @version      1.0.4
 // @description  Adds label to code review comments
 // @author       Itai Soudry
 // @match        https://bitbucket.org/joonkodev/*/pull-requests/*
@@ -61,6 +61,14 @@ function parseConventionalCommits() {
     commentDivs.forEach(div => {
         let textNode = div.childNodes[1].childNodes[0].childNodes[1];
 
+        const commentButtonSpans = div.querySelectorAll('button > span > span');
+        commentButtonSpans.forEach(span=>{
+            if(span.innerText === 'Edit'){
+                const editDivParentNode = span.parentNode.parentNode.parentNode.parentNode;
+                editDivParentNode.parentNode.removeChild(editDivParentNode);
+            }
+        });
+
         if (!parsedCommentIds.includes(div.id)) {
             const divText = textNode.innerText;
             const comment = parse(divText);
@@ -107,9 +115,11 @@ function parse(text) {
 }
 
 function inject(textNode, label, color) {
+
     if (label && color) {
         const spanToInject = `<span style="background-color:${color}; border-radius:0.375em; padding: 0.2rem 0.5rem;">${label}</span>`;
         textNode.innerHTML = textNode.innerHTML.replace(label, spanToInject);
+        console.log(textNode);
     }
 
     return textNode;
