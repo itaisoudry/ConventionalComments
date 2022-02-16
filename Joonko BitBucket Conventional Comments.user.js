@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Joonko BitBucket Conventional Comments
-// @version      1.0.0
+// @version      1.0.1
 // @description  Adds label to code review comments
 // @author       Itai Soudry
 // @match        https://bitbucket.org/joonkodev/*/pull-requests/*
@@ -25,7 +25,8 @@ const LABELS = {
     "typo": "#99EF43",
     "polish": "#F6E5DF",
     "quibble": "#B28474",
-    "MENO": "#DDE006"
+    "MENO": "#DDE006",
+    "TEST": "#AAA000"
 }
 const DECORATIONS = {"(non-blocking)": "#9EFE00", "(blocking)": "#FB0001", "(if-minor)": "#FAFE04"}
 
