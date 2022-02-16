@@ -25,14 +25,13 @@ const LABELS = {
     "typo": "#99EF43",
     "polish": "#F6E5DF",
     "quibble": "#B28474",
-    "MENO": "#DDE006",
-    "TEST": "#DDD001"
+    "MENO": "#DDE006"
 }
 const DECORATIONS = {"(non-blocking)": "#9EFE00", "(blocking)": "#FB0001", "(if-minor)": "#FAFE04"}
 
 function clickEventHandler(e) {
     if (e.target.innerText === 'Save') {
-        setTimeout(() => parseConventionalCommits(), 1000);
+        setTimeout(() => parseConventionalCommits(), 1200);
     }
 }
 
@@ -99,7 +98,6 @@ function inject(textNode, label, color) {
 }
 
 const descriptionInterval = setInterval(() => {
-    console.log('description interval');
     if (document.querySelector('[aria-label="Diffs"]')) {
         parseConventionalCommits();
         clearInterval(descriptionInterval);
