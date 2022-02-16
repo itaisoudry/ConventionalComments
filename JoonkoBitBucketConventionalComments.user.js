@@ -1,16 +1,21 @@
 // ==UserScript==
 // @name         Joonko BitBucket Conventional Comments
-// @version      1.0.2
+// @version      1.0.3
 // @description  Adds label to code review comments
 // @author       Itai Soudry
 // @match        https://bitbucket.org/joonkodev/*/pull-requests/*
 // @downloadURL  https://github.com/itaisoudry/ConventionalComments/raw/main/JoonkoBitBucketConventionalComments.user.js
 // @updateURL    https://github.com/itaisoudry/ConventionalComments/raw/main/JoonkoBitBucketConventionalComments.user.js
 // @grant        none
+// @run-at       document-end
 // ==/UserScript==
 
 document.addEventListener('click', (e) => {
     clickEventHandler(e);
+});
+
+document.addEventListener('scroll', () => {
+    scrollEventHandler();
 });
 
 const LABELS = {
@@ -25,13 +30,26 @@ const LABELS = {
     "typo": "#99EF43",
     "polish": "#F6E5DF",
     "quibble": "#B28474",
-    "MENO": "#DDE006"
+    "MENO": "#DDE006",
+    "TEST": "#DDD001"
 }
 const DECORATIONS = {"(non-blocking)": "#9EFE00", "(blocking)": "#FB0001", "(if-minor)": "#FAFE04"}
 
 function clickEventHandler(e) {
     if (e.target.innerText === 'Save') {
         setTimeout(() => parseConventionalCommits(), 1200);
+    }
+}
+
+const reachedPageBottom = false;
+
+function scrollEventHandler(){
+    if(!reachedPageBottom){
+        parseConventionalCommits();
+    }
+
+    if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight - 50) {
+        reachedPageBottom=true;
     }
 }
 
@@ -98,6 +116,7 @@ function inject(textNode, label, color) {
 }
 
 const descriptionInterval = setInterval(() => {
+    console.log('description interval');
     if (document.querySelector('[aria-label="Diffs"]')) {
         parseConventionalCommits();
         clearInterval(descriptionInterval);
