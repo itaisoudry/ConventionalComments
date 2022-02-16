@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Joonko BitBucket Conventional Comments
-// @version      1.0.0
+// @version      1.0.1
 // @description  Adds label to code review comments
 // @author       Itai Soudry
 // @match        https://bitbucket.org/joonkodev/*/pull-requests/*
