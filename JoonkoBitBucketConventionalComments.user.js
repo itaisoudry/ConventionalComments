@@ -4,8 +4,8 @@
 // @description  Adds label to code review comments
 // @author       Itai Soudry
 // @match        https://bitbucket.org/joonkodev/*/pull-requests/*
-// @downloadURL  https://github.com/itaisoudry/ConventionalComments/blob/main/Joonko%20BitBucket%20Conventional%20Comments.user.js
-// @updateURL    https://github.com/itaisoudry/ConventionalComments/blob/main/Joonko%20BitBucket%20Conventional%20Comments.user.js
+// @downloadURL  https://github.com/itaisoudry/ConventionalComments/raw/main/JoonkoBitBucketConventionalComments.user.js
+// @updateURL    https://github.com/itaisoudry/ConventionalComments/raw/main/JoonkoBitBucketConventionalComments.user.js
 // @grant        none
 // ==/UserScript==
 
