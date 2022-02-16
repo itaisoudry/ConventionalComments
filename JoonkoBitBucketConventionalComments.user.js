@@ -25,7 +25,8 @@ const LABELS = {
     "typo": "#99EF43",
     "polish": "#F6E5DF",
     "quibble": "#B28474",
-    "MENO": "#DDE006"
+    "MENO": "#DDE006",
+    "TEST": "#DDD001"
 }
 const DECORATIONS = {"(non-blocking)": "#9EFE00", "(blocking)": "#FB0001", "(if-minor)": "#FAFE04"}
 
